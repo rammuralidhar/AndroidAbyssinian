@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidAbyssinian.iml" filepath="$PROJECT_DIR$/AndroidAbyssinian.iml" />
+      <module fileurl="file://$PROJECT_DIR$/abyssinian/abyssinian.iml" filepath="$PROJECT_DIR$/abyssinian/abyssinian.iml" />
+      <module fileurl="file://$PROJECT_DIR$/abyssinianfont/abyssinianfont.iml" filepath="$PROJECT_DIR$/abyssinianfont/abyssinianfont.iml" />
+      <module fileurl="file://$PROJECT_DIR$/abyssiniantextview/abyssiniantextview.iml" filepath="$PROJECT_DIR$/abyssiniantextview/abyssiniantextview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/samples/samples.iml" filepath="$PROJECT_DIR$/samples/samples.iml" />
+    </modules>
+  </component>
+</project>
+

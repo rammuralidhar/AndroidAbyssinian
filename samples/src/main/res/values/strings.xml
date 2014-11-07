@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">samples</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="view_manipulators">
+        <item>com.abyssinian.android.ext.font.FontManipulator:fontPath</item>
+    </string-array>
+</resources>
