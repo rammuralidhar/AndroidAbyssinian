@@ -2,9 +2,10 @@
 <resources>
 
     <string name="app_name">samples</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world"><p><font color='blue'>Hello world!</font></p></string>
     <string name="action_settings">Settings</string>
     <string-array name="view_manipulators">
         <item>com.abyssinian.android.ext.font.FontManipulator:fontPath</item>
+        <item>com.abyssinian.android.ext.textview.TextViewManipulator:underline,strikethrough</item>
     </string-array>
 </resources>

@@ -30,4 +30,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':abyssinian')
     compile project(':abyssinianfont')
+    compile project(':abyssiniantextview')
 }
