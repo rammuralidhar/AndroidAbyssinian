@@ -16,6 +16,7 @@
         auto:fontPath="fonts/BankGothic_Bold.ttf"
         auto:underline="true"
         auto:strikethrough="true"
+        auto:justify="true"
         />
 
 </RelativeLayout>

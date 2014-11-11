@@ -4,10 +4,12 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import com.abyssinian.android.ext.AttributeHelperUtils;
 import com.abyssinian.android.ext.ViewManipulator;
+import com.abyssinian.android.ext.utils.TextJustifyUtils;
 
 /**
  * Created by ram.murlidhar on 07-11-2014.
@@ -38,6 +40,27 @@ public class TextViewManipulator implements ViewManipulator {
                             if (value.equals("true")) {
                                 TextView view1 = (TextView) view;
                                 view1.setPaintFlags(view1.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                            }
+                            break;
+                        case "justify":
+                            if (value.equals("true")) {
+                                final TextView txtView = (TextView) view;
+                                txtView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                                    boolean isJustified = false;
+
+                                    @Override
+                                    public boolean onPreDraw()
+                                    {
+                                        if(!isJustified)
+                                        {
+                                            TextJustifyUtils.run(txtView, txtView.getWidth());
+                                            isJustified = true;
+                                        }
+
+                                        return true;
+                                    }
+
+                                });
                             }
                             break;
                     }
