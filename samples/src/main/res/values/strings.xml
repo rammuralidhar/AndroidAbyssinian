@@ -7,5 +7,6 @@
     <string-array name="view_manipulators">
         <item>com.abyssinian.android.ext.font.FontManipulator:fontPath</item>
         <item>com.abyssinian.android.ext.textview.TextViewManipulator:underline,strikethrough,justify</item>
+        <item>com.abyssinian.android.ext.databind.DataBindViewManipulator:databind</item>
     </string-array>
 </resources>

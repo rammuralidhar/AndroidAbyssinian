@@ -16,9 +16,14 @@ public class MainActivity extends Activity {
         super.attachBaseContext(new PluginExtensionContextWrapper(newBase, R.array.view_manipulators));
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SampleDto dto = new SampleDto();
+        dto.setTest("test123");
+        // set the dto
+        getIntent().putExtra("data", dto);
         setContentView(R.layout.activity_main);
     }
 

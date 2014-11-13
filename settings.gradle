@@ -1,1 +1,1 @@
-include ':abyssinian', ':samples', ':abyssiniantextview', ':abyssinianfont'
+include ':abyssinian', ':samples', ':abyssiniantextview', ':abyssinianfont', ':abyssiniandatabind'

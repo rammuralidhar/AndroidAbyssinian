@@ -25,7 +25,6 @@ public class TextViewManipulator implements ViewManipulator {
                 int mAttributeId = context.getResources().getIdentifier(customAttributeName,
                         "attr", context.getPackageName());
                 String value = AttributeHelperUtils.getAttributeValue(context, attrs, mAttributeId);
-
                 // do post processing
                 if (value != null) {
                     // simple
@@ -47,12 +46,9 @@ public class TextViewManipulator implements ViewManipulator {
                                 final TextView txtView = (TextView) view;
                                 txtView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
                                     boolean isJustified = false;
-
                                     @Override
-                                    public boolean onPreDraw()
-                                    {
-                                        if(!isJustified)
-                                        {
+                                    public boolean onPreDraw() {
+                                        if(!isJustified) {
                                             TextJustifyUtils.run(txtView, txtView.getWidth());
                                             isJustified = true;
                                         }
