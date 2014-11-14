@@ -5,18 +5,9 @@
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="modules">
-          <set>
-            <option value="C:\Users\ram.murlidhar\AndroidStudioProjects\AndroidAbyssinian" />
-            <option value="C:\Users\ram.murlidhar\AndroidStudioProjects\AndroidAbyssinian\abyssinian" />
-            <option value="C:\Users\ram.murlidhar\AndroidStudioProjects\AndroidAbyssinian\abyssiniandatabind" />
-            <option value="C:\Users\ram.murlidhar\AndroidStudioProjects\AndroidAbyssinian\abyssinianfont" />
-            <option value="C:\Users\ram.murlidhar\AndroidStudioProjects\AndroidAbyssinian\abyssiniantextview" />
-            <option value="C:\Users\ram.murlidhar\AndroidStudioProjects\AndroidAbyssinian\samples" />
-          </set>
-        </option>
       </GradleProjectSettings>
     </option>
+    <option name="gradleVmOptions" value="-XX:MaxHeapSize=256m -Xmx256m" />
   </component>
 </project>
 

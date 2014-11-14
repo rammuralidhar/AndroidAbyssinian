@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.abyssinian.android.ext.AttributeHelperUtils;
 import com.abyssinian.android.ext.ViewManipulator;
+import com.bindroid.BindingMode;
+import com.bindroid.ui.EditTextTextProperty;
 import com.bindroid.ui.UiBinder;
 
 /**
@@ -16,21 +19,32 @@ import com.bindroid.ui.UiBinder;
 public class DataBindViewManipulator implements ViewManipulator {
     @Override
     public void manipulateView(View view, String name, Context context, String customAttributes, AttributeSet attrs) {
-        if (view instanceof TextView) {
-            String[] customAttributesArr = customAttributes.split(",");
+        String[] customAttributesArr = customAttributes.split(",");
 
-            for (String customAttributeName : customAttributesArr) {
-                int mAttributeId = context.getResources().getIdentifier(customAttributeName,
-                        "attr", context.getPackageName());
-                String value = AttributeHelperUtils.getAttributeValue(context, attrs, mAttributeId);
-                if (value != null) {
-                    // simple
-                    switch (customAttributeName) {
-                        case "databind":
-                            String intentStr = value.substring(0, value.indexOf('.'));
-                            String objPath = value.substring(value.indexOf('.') + 1);
-                            Object model = ((Activity) context).getIntent().getSerializableExtra(intentStr);
+        for (String customAttributeName : customAttributesArr) {
+            int mAttributeId = context.getResources().getIdentifier(customAttributeName,
+                    "attr", context.getPackageName());
+            String value = AttributeHelperUtils.getAttributeValue(context, attrs, mAttributeId);
+            if (value != null) {
+                // simple
+                switch (customAttributeName) {
+                    case "databindtext": {
+                        String intentStr = value.substring(0, value.indexOf('.'));
+                        String objPath = value.substring(value.indexOf('.') + 1);
+                        Object model = ((Activity) context).getIntent().getSerializableExtra(intentStr);
+                        if (view instanceof EditText) {
+                            UiBinder.bind(new EditTextTextProperty((EditText) view), model,
+                                    objPath, BindingMode.TWO_WAY);
+                        } else if (view instanceof TextView) {
                             UiBinder.bind(view, "Text", model, objPath);
+                        }
+                        break;
+                    }
+                    case "databindtvisibility": {
+                        String intentStr = value.substring(0, value.indexOf('.'));
+                        String objPath = value.substring(value.indexOf('.') + 1);
+                        Object model = ((Activity) context).getIntent().getSerializableExtra(intentStr);
+                        UiBinder.bind(view, "Visibility", model, objPath);
                         break;
                     }
                 }

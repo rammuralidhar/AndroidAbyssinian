@@ -17,6 +17,14 @@
         auto:underline="true"
         auto:strikethrough="true"
         auto:justify="true"
-        auto:databind="data.Test" />
+        auto:databindtext="data.Test" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_below="@+id/TextView"
+        auto:databindtext="data.Test"
+/>
 
 </RelativeLayout>
