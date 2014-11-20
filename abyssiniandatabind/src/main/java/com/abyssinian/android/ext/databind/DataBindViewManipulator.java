@@ -5,12 +5,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.abyssinian.android.ext.AttributeHelperUtils;
 import com.abyssinian.android.ext.ViewManipulator;
 import com.bindroid.BindingMode;
 import com.bindroid.ui.EditTextTextProperty;
+import com.bindroid.ui.SpinnerTextProperty;
 import com.bindroid.ui.UiBinder;
 
 /**
@@ -37,6 +39,9 @@ public class DataBindViewManipulator implements ViewManipulator {
                                     objPath, BindingMode.TWO_WAY);
                         } else if (view instanceof TextView) {
                             UiBinder.bind(view, "Text", model, objPath);
+                        } else if (view instanceof Spinner) {
+                            UiBinder.bind(new SpinnerTextProperty((Spinner) view), model,
+                                    objPath, BindingMode.TWO_WAY);
                         }
                         break;
                     }

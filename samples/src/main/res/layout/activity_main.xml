@@ -17,6 +17,7 @@
         auto:underline="true"
         auto:strikethrough="true"
         auto:justify="true"
+        android:text="Text1"
         auto:databindtext="data.Test" />
 
     <EditText
@@ -27,4 +28,22 @@
         auto:databindtext="data.Test"
 />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        auto:databindtext="data.Test"
+        android:id="@+id/textView"
+        android:layout_below="@+id/editText"
+        android:layout_marginTop="33dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        auto:databindtext="data.Test"
+        android:entries="@array/data" />
 </RelativeLayout>

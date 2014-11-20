@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SampleDto dto = new SampleDto();
-        dto.setTest("test123 sdsad asdas dasdsad asda s asdasdasd asdsa asdasd asdasdasdas asdas das asdas asdasd");
+        dto.setTest("data3");
         System.out.println(dto.getTest());
         // set the dto
         getIntent().putExtra("data", dto);

@@ -9,4 +9,9 @@
         <item>com.abyssinian.android.ext.textview.TextViewManipulator:underline,strikethrough,justify</item>
         <item>com.abyssinian.android.ext.databind.DataBindViewManipulator:databindtext,databindvisibility</item>
     </string-array>
+    <string-array name="data">
+        <item>data1</item>
+        <item>data2</item>
+        <item>data3</item>
+    </string-array>
 </resources>
