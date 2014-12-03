@@ -1,11 +1,9 @@
-apply plugin: 'android'
+apply plugin: 'android-library'
 
 android {
     compileSdkVersion 19
     buildToolsVersion '19.0.3'
-    lintOptions {
-        disable 'MissingPrefix'
-    }
+
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 19
@@ -17,6 +15,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
+
     buildTypes {
         release {
             runProguard false
@@ -29,8 +28,4 @@ dependencies {
     compile 'com.android.support:appcompat-v7:+'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':abyssinian')
-    compile project(':abyssinianfont')
-    compile project(':abyssiniantextview')
-    compile project(':abyssiniandatabind')
-    compile project(':abyssinianlistview')
 }

@@ -1,6 +1,6 @@
 package com.abyssinian.android.ext.samples;
 
-import com.bindroid.trackable.Trackable;
+import com.bindroid.trackable.TrackableCollection;
 import com.bindroid.trackable.TrackableField;
 
 import java.io.Serializable;
@@ -10,6 +10,16 @@ import java.io.Serializable;
  */
 public class SampleDto implements Serializable {
     private TrackableField<String> test = new TrackableField<String>();
+
+    public TrackableCollection<String> getStringList() {
+        return stringList.get();
+    }
+    public void setStringList(TrackableCollection<String> t) {
+        stringList.set(t);
+    }
+
+
+    private TrackableField<TrackableCollection<String>> stringList = new TrackableField<TrackableCollection<String>>();
     public String getTest() {
         return test.get();
     }

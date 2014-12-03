@@ -45,6 +45,15 @@ public final class UiBinder {
         return b;
     }
 
+    public static Binding bind(View view, String targetProperty,
+                               Object sourceObject, String sourceProperty, ValueConverter converter) {
+        Binding b = new Binding(UiProperty.make(new WeakReflectedProperty(view, targetProperty)),
+                new ReflectedProperty(sourceObject, sourceProperty), BindingMode.ONE_WAY,
+                converter);
+        return b;
+    }
+
+
   /**
    * Binds a view within an {@link android.app.Activity} to the given property.
    * 

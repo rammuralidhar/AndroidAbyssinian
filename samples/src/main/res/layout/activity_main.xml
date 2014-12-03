@@ -46,4 +46,16 @@
         android:layout_alignParentStart="true"
         auto:databindtext="data.Test"
         android:entries="@array/data" />
+
+    <ListView
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        auto:databindtext="data.StringList"
+        android:layout_below="@+id/spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
 </RelativeLayout>

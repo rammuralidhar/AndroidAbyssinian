@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.abyssinian.android.ext.PluginExtensionContextWrapper;
+import com.bindroid.trackable.TrackableCollection;
 
 /**
  *
@@ -22,7 +23,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         SampleDto dto = new SampleDto();
         dto.setTest("data3");
+        dto.setStringList(new TrackableCollection<String>());
+        dto.getStringList().add("tewt");
+        dto.getStringList().add("tewt");
+        dto.getStringList().add("tewt");
         System.out.println(dto.getTest());
+
         // set the dto
         getIntent().putExtra("data", dto);
         setContentView(R.layout.activity_main);
@@ -35,4 +41,6 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
+
 }

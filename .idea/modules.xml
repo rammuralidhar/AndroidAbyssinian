@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/abyssinian/abyssinian.iml" filepath="$PROJECT_DIR$/abyssinian/abyssinian.iml" />
       <module fileurl="file://$PROJECT_DIR$/abyssiniandatabind/abyssiniandatabind.iml" filepath="$PROJECT_DIR$/abyssiniandatabind/abyssiniandatabind.iml" />
       <module fileurl="file://$PROJECT_DIR$/abyssinianfont/abyssinianfont.iml" filepath="$PROJECT_DIR$/abyssinianfont/abyssinianfont.iml" />
+      <module fileurl="file://$PROJECT_DIR$/abyssinianlistview/abyssinianlistview.iml" filepath="$PROJECT_DIR$/abyssinianlistview/abyssinianlistview.iml" />
       <module fileurl="file://$PROJECT_DIR$/abyssiniantextview/abyssiniantextview.iml" filepath="$PROJECT_DIR$/abyssiniantextview/abyssiniantextview.iml" />
       <module fileurl="file://$PROJECT_DIR$/samples/samples.iml" filepath="$PROJECT_DIR$/samples/samples.iml" />
     </modules>
