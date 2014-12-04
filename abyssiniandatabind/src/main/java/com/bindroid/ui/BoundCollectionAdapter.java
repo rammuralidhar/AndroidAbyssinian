@@ -34,10 +34,8 @@ import com.bindroid.utils.Action;
 public class BoundCollectionAdapter<T> implements ListAdapter, SpinnerAdapter {
   private TrackableCollection<T> data;
   private TrackableCollection<T> presentedData;
-  private Class<? extends View> viewType;
-  private Class<? extends View> dropDownViewType;
-  private Constructor<? extends View> viewConstructor;
-  private Constructor<? extends View> dropDownViewConstructor;
+  private HasView viewType;
+  private HasView dropDownViewType;
   private Tracker tracker;
   private final List<DataSetObserver> observers;
   private boolean recycleViews;
@@ -57,7 +55,7 @@ public class BoundCollectionAdapter<T> implements ListAdapter, SpinnerAdapter {
    * @param viewType
    *          the type of {@link android.view.View} to create for each element of the collection.
    */
-  public BoundCollectionAdapter(TrackableCollection<T> data, Class<? extends View> viewType) {
+  public BoundCollectionAdapter(TrackableCollection<T> data, HasView viewType) {
     this(data, viewType, true, false);
   }
 
@@ -73,7 +71,7 @@ public class BoundCollectionAdapter<T> implements ListAdapter, SpinnerAdapter {
    * @param cacheViews
    *          whether to cache views.
    */
-  public BoundCollectionAdapter(TrackableCollection<T> data, Class<? extends View> viewType,
+  public BoundCollectionAdapter(TrackableCollection<T> data, HasView viewType,
       boolean recycleViews, boolean cacheViews) {
     this(data, viewType, recycleViews, cacheViews, viewType);
   }
@@ -92,22 +90,16 @@ public class BoundCollectionAdapter<T> implements ListAdapter, SpinnerAdapter {
    * @param dropDownViewType
    *          the type of {@link android.view.View} to create for dropdowns.
    */
-  public BoundCollectionAdapter(TrackableCollection<T> data, Class<? extends View> viewType,
-      boolean recycleViews, boolean cacheViews, Class<? extends View> dropDownViewType) {
+  public BoundCollectionAdapter(TrackableCollection<T> data,HasView viewType,
+      boolean recycleViews, boolean cacheViews, HasView dropDownViewType) {
     if (cacheViews) {
       this.cachedViews = new HashMap<T, View>();
     }
     this.observers = new LinkedList<DataSetObserver>();
     this.data = data;
-    this.presentedData = new TrackableCollection<T>(data);
+    this.presentedData = new TrackableCollection<T>((List<T>) data);
     this.viewType = viewType;
     this.dropDownViewType = dropDownViewType;
-    try {
-      this.viewConstructor = this.viewType.getConstructor(Context.class);
-      this.dropDownViewConstructor = this.dropDownViewType.getConstructor(Context.class);
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
     this.recycleViews = recycleViews;
     this.tracker = new Tracker() {
       @Override
@@ -141,7 +133,7 @@ public class BoundCollectionAdapter<T> implements ListAdapter, SpinnerAdapter {
 
   @Override
   public View getDropDownView(int position, View convertView, ViewGroup parent) {
-    return this.getView(position, convertView, parent, this.dropDownViewConstructor);
+    return this.getView(position, convertView, parent, this.dropDownViewType);
   }
 
   @Override
@@ -165,12 +157,12 @@ public class BoundCollectionAdapter<T> implements ListAdapter, SpinnerAdapter {
 
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
-    return this.getView(position, convertView, parent, this.viewConstructor);
+    return this.getView(position, convertView, parent, this.viewType);
   }
 
   @SuppressWarnings("unchecked")
   private View getView(int position, View convertView, ViewGroup parent,
-      Constructor<? extends View> viewConstructor) {
+      HasView viewConstructor) {
     synchronized (this.observers) {
       T dataItem = this.presentedData.get(position);
       if (this.cachedViews != null && this.cachedViews.containsKey(dataItem)) {
@@ -179,7 +171,7 @@ public class BoundCollectionAdapter<T> implements ListAdapter, SpinnerAdapter {
       View result = convertView;
       if (!this.recycleViews || result == null || this.cachedViews != null) {
         try {
-          result = viewConstructor.newInstance(parent.getContext());
+          result = viewConstructor.getView();
         } catch (Exception e) {
           throw new RuntimeException(e);
         }
@@ -221,7 +213,7 @@ public class BoundCollectionAdapter<T> implements ListAdapter, SpinnerAdapter {
       @Override
       public void run() {
         BoundCollectionAdapter.this.presentedData = new TrackableCollection<T>(
-            BoundCollectionAdapter.this.data);
+                (List<T>) BoundCollectionAdapter.this.data);
 
         if (BoundCollectionAdapter.this.cachedViews != null) {
           Map<T, View> newCache = new HashMap<T, View>();

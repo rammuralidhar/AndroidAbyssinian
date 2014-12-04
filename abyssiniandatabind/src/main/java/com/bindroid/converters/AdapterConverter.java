@@ -3,20 +3,19 @@ package com.bindroid.converters;
 import java.util.List;
 
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.ListView;
 
 import com.bindroid.ValueConverter;
 import com.bindroid.trackable.TrackableCollection;
 import com.bindroid.ui.BoundCollectionAdapter;
+import com.bindroid.ui.HasView;
 
 /**
  * A {@link ValueConverter} that converts a {@link java.util.List} or {@link com.bindroid.trackable.TrackableCollection} into an
  * {@link android.widget.Adapter} that can be used for {@link android.widget.ListView}s and other UI widgets.
  */
 public class AdapterConverter extends ValueConverter {
-  private Class<? extends View> viewType;
-  private Class<? extends View> dropDownViewType;
+  private HasView viewType;
+  private HasView dropDownViewType;
   private boolean recycleViews;
   private boolean cacheViews;
 
@@ -27,7 +26,7 @@ public class AdapterConverter extends ValueConverter {
    * @param viewType
    *          The type of view to construct for each object in the list.
    */
-  public AdapterConverter(Class<? extends View> viewType) {
+  public AdapterConverter(HasView viewType) {
     this(viewType, true);
   }
 
@@ -40,7 +39,7 @@ public class AdapterConverter extends ValueConverter {
    * @param recycleViews
    *          Whether views should be recycled by the adapter.
    */
-  public AdapterConverter(Class<? extends View> viewType, boolean recycleViews) {
+  public AdapterConverter(HasView viewType, boolean recycleViews) {
     this(viewType, recycleViews, false);
   }
 
@@ -55,7 +54,7 @@ public class AdapterConverter extends ValueConverter {
    * @param cacheViews
    *          Whether views should be cached by the adapter.
    */
-  public AdapterConverter(Class<? extends View> viewType, boolean recycleViews, boolean cacheViews) {
+  public AdapterConverter(HasView viewType, boolean recycleViews, boolean cacheViews) {
     this(viewType, recycleViews, cacheViews, viewType);
   }
 
@@ -72,15 +71,22 @@ public class AdapterConverter extends ValueConverter {
    * @param dropDownViewType
    *          The type of view to construct for drop-downs.
    */
-  public AdapterConverter(Class<? extends View> viewType, boolean recycleViews, boolean cacheViews,
-      Class<? extends View> dropDownViewType) {
+  public AdapterConverter(HasView viewType, boolean recycleViews, boolean cacheViews,
+      HasView dropDownViewType) {
     this.setViewType(viewType);
     this.setDropDownViewType(dropDownViewType);
     this.recycleViews = recycleViews;
     this.cacheViews = cacheViews;
   }
 
-  @SuppressWarnings("unchecked")
+    public AdapterConverter(HasView viewType, String rowItem) {
+        this.setViewType(viewType);
+        this.setDropDownViewType(dropDownViewType);
+        this.recycleViews = true;
+        this.cacheViews = true;
+    }
+
+    @SuppressWarnings("unchecked")
   @Override
   public Object convertToTarget(Object sourceValue, Class<?> targetType) {
     TrackableCollection<Object> source;
@@ -93,19 +99,19 @@ public class AdapterConverter extends ValueConverter {
         this.cacheViews, this.getDropDownViewType());
   }
 
-  private Class<? extends View> getDropDownViewType() {
+  private HasView getDropDownViewType() {
     return this.dropDownViewType;
   }
 
-  private Class<? extends View> getViewType() {
+  private HasView getViewType() {
     return this.viewType;
   }
 
-  private void setDropDownViewType(Class<? extends View> value) {
+  private void setDropDownViewType(HasView value) {
     this.dropDownViewType = value;
   }
 
-  private void setViewType(Class<? extends View> value) {
+  private void setViewType(HasView value) {
     this.viewType = value;
   }
 }

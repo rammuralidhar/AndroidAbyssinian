@@ -46,8 +46,16 @@ public class DataBindViewManipulator implements ViewManipulator {
                             UiBinder.bind(new SpinnerTextProperty((Spinner) view), model,
                                     objPath, BindingMode.TWO_WAY);
                         }  else if (view instanceof ListView) {
-                            UiBinder.bind(view, "Adapter", model, objPath,
-                                    new AdapterConverter(BindableTextView.class));
+                            int rowItemAttributeId = context.getResources().getIdentifier("rowItem",
+                                    "attr", context.getPackageName());
+                            if (rowItemAttributeId != -1) {
+                                String rowItem = AttributeHelperUtils.getAttributeValue(context, attrs, rowItemAttributeId);
+                                UiBinder.bind(view, "Adapter", model, objPath, new AdapterConverter(
+                                        new CustomLayoutView(rowItem, context)));
+                            } else {
+                                UiBinder.bind(view, "Adapter", model, objPath,
+                                        new AdapterConverter(new BindableTextView(context)));
+                            }
                         }
                         break;
                     }

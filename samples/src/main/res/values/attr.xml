@@ -6,4 +6,6 @@
     <attr name="justify" format="string"/>
     <attr name="databindtext" format="string"/>
     <attr name="databindvisibility" format="string"/>
+    <attr name="rowItem" format="string"/>
+
 </resources>

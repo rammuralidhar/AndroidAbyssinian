@@ -24,9 +24,11 @@ public class MainActivity extends Activity {
         SampleDto dto = new SampleDto();
         dto.setTest("data3");
         dto.setStringList(new TrackableCollection<String>());
-        dto.getStringList().add("tewt");
-        dto.getStringList().add("tewt");
-        dto.getStringList().add("tewt");
+        dto.getStringList().add("test");
+        dto.getStringList().add("test");
+        dto.getStringList().add("test");
+        dto.getStringList().add("test");
+        dto.getStringList().add("test");
         System.out.println(dto.getTest());
 
         // set the dto
