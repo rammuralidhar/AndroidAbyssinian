@@ -33,4 +33,5 @@ dependencies {
     compile project(':abyssiniantextview')
     compile project(':abyssiniandatabind')
     compile project(':abyssinianlistview')
+    compile project(':abyssinianninepatch')
 }

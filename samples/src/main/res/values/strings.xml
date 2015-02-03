@@ -8,6 +8,7 @@
         <item>com.abyssinian.android.ext.font.FontManipulator:fontPath</item>
         <item>com.abyssinian.android.ext.textview.TextViewManipulator:underline,strikethrough,justify</item>
         <item>com.abyssinian.android.ext.databind.DataBindViewManipulator:databindtext,databindvisibility</item>
+        <item>com.abyssinian.android.ext.ninepatch.NinePatchViewManipulator:src_assets,background_assets,density_hint</item>
     </string-array>
     <string-array name="data">
         <item>data1</item>

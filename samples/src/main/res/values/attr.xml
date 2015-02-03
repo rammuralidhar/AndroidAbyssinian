@@ -8,4 +8,8 @@
     <attr name="databindvisibility" format="string"/>
     <attr name="rowItem" format="string"/>
 
+    <attr name="src_assets" format="string"/>
+    <attr name="background_assets" format="string"/>
+    <attr name="density_hint" format="string"/>
+
 </resources>

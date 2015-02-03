@@ -75,6 +75,7 @@
     <orderEntry type="module" module-name="abyssinianlistview" exported="" />
     <orderEntry type="module" module-name="abyssinian" exported="" />
     <orderEntry type="module" module-name="abyssiniandatabind" exported="" />
+    <orderEntry type="module" module-name="abyssinianninepatch" exported="" />
     <orderEntry type="module" module-name="abyssiniantextview" exported="" />
     <orderEntry type="module" module-name="abyssinianfont" exported="" />
   </component>
